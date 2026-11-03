@@ -14,15 +14,22 @@ public class Health : MonoBehaviour
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        currentHealth = maximumHealth;
+        Initialize(maximumHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void Initialize(int startingMaxHealth)
+    {
+        maximumHealth = Mathf.Max(startingMaxHealth, 1);
+        currentHealth = maximumHealth;
+        isDefeated = false;
     }
 
     public void TakeDamage(int damageAmount)

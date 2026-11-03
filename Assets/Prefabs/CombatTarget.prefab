@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 7364277121663148844}
   - component: {fileID: 5389501375146591297}
   - component: {fileID: 1230872438586347978}
+  - component: {fileID: 6708049782561547716}
   m_Layer: 0
   m_Name: CombatTarget
   m_TagString: CombatTag
@@ -204,3 +205,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageVolume
   damageAmount: 1
+--- !u!114 &6708049782561547716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433490857433487323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956cc6767a9c9204ca49f8d5dde00438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  myHealth: {fileID: 5389501375146591297}
+  enemyType: 0
