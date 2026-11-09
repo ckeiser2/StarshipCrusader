@@ -12,4 +12,9 @@ public static class EnemyProfiles
         return new EnemyData(enemyName: "Heavy Fighter", maximumHealth: 4, scoreValue: 200);
     }
     
+    public static EnemyData CreateTurret()
+    {
+        return new EnemyData(enemyName: "Turret Sentry", maximumHealth: 2, scoreValue: 300);
+    }
+    
 }

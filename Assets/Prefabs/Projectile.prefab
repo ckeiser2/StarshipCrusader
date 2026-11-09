@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   projectileRigidBody: {fileID: 127823421536375672}
-  movementSpeed: 40
-  lifetime: 5
+  movementSpeed: 25
+  lifetime: 10
+  damageAmount: 1
 --- !u!54 &127823421536375672
 Rigidbody:
   m_ObjectHideFlags: 0

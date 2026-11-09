@@ -4,14 +4,13 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private Health myHealth;
-    
-    [SerializeField] 
-    private EnemyType enemyType;
+
     
     public enum EnemyType
     {
         Scout = 0,
-        HeavyFighter = 1
+        HeavyFighter = 1,
+        Turret = 2
         
     }
 
@@ -22,29 +21,40 @@ public class Enemy : MonoBehaviour
         
     }
     
-    void Start()
+    protected virtual void Start()
     {
-        enemyData = CreateEnemyData(enemyType);
-
-        myHealth.Initialize(enemyData.MaximumHealth);
-
-        gameObject.name = enemyData.EnemyName;
+        InitializeEnemy();
     }
 
     
-    void Update()
+    protected void Update()
+    {
+        UpdateBehavior();
+    }
+
+    protected virtual void UpdateBehavior()
     {
         
     }
 
-    private EnemyData CreateEnemyData(EnemyType selectedType)
+    protected void InitializeEnemy()
     {
-        if (enemyType == EnemyType.Scout)
-        {
-            return EnemyProfiles.CreateScout();
-        }
+        enemyData = CreateEnemyData();
 
-        return EnemyProfiles.CreateHeavyFighter();
+        myHealth.Initialize(enemyData.MaximumHealth);
         
+        LogEnemyData();
+    }
+
+    protected virtual EnemyData CreateEnemyData()
+    {
+        return EnemyProfiles.CreateScout();
+    }
+    
+    private void LogEnemyData()
+    {
+        Debug.Log("Created " + enemyData.EnemyName + 
+                  "| Health" + enemyData.MaximumHealth + 
+                  "| Score:" + enemyData.ScoreValue);
     }
 }
