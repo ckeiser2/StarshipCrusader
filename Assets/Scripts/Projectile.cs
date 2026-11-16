@@ -25,15 +25,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("CombatTag") == false)
+        bool isDamageable = other.TryGetComponent(out IDamageable damageable);
+        if (isDamageable)
         {
-            return;
-        }
-        
-        bool foundHealth = other.TryGetComponent(out Health targetHealth);
-        if (foundHealth)
-        {
-            targetHealth.TakeDamage(damageAmount);
+            damageable.TakeDamage(damageAmount);
         }
         
         Debug.Log("Projectile overlapped: " + other.gameObject.name);

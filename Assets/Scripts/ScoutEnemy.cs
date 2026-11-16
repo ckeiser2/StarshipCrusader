@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScoutEnemy : Enemy
+public class ScoutEnemy : Enemy, IDamageable
 {
 
     [Min(0f)] [SerializeField] private float horizontalDistance = 2f;

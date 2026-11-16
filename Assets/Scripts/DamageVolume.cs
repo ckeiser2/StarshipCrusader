@@ -28,7 +28,7 @@ public class DamageVolume : MonoBehaviour
             return;
         }
 
-        bool foundHealth = other.TryGetComponent(out Health playerHealth);
+        bool foundHealth = other.TryGetComponent(out IDamageable playerHealth);
         if (foundHealth == true)
         {
             playerHealth.TakeDamage(damageAmount);

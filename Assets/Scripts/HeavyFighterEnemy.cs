@@ -58,4 +58,6 @@ public class HeavyFighterEnemy : Enemy
         return EnemyProfiles.CreateHeavyFighter();
     }
 
+
+
 }

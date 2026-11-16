@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField]
     private Health myHealth;
@@ -56,5 +56,10 @@ public class Enemy : MonoBehaviour
         Debug.Log("Created " + enemyData.EnemyName + 
                   "| Health" + enemyData.MaximumHealth + 
                   "| Score:" + enemyData.ScoreValue);
+    }
+    
+    public void TakeDamage(int damageAmount)
+    {
+        myHealth.TakeDamage(damageAmount);
     }
 }
