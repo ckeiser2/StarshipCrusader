@@ -8,9 +8,32 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int maximumHealth = 3;
 
-    private int currentHealth;
+    public int CurrentHealth {
+        get
+        {
+            return currentHealth;
+        }
+    }
 
-    private bool isDefeated = false;
+    public int MaximumHealth
+    {
+        get
+        {
+            return maximumHealth;
+        }
+    }
+    
+    private int currentHealth;
+    
+    
+
+    private bool isDefeated;
+
+    public delegate void HealthChangedHandler(int current, int max);
+
+    public event HealthChangedHandler OnHealthChanged;
+    
+    
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,11 +48,18 @@ public class Health : MonoBehaviour
         
     }
 
+    private void BroadcastHealthChanged()
+    {
+        OnHealthChanged?.Invoke(currentHealth, max:maximumHealth);
+    }
+
     public void Initialize(int startingMaxHealth)
     {
         maximumHealth = Mathf.Max(startingMaxHealth, 1);
         currentHealth = maximumHealth;
         isDefeated = false;
+
+        BroadcastHealthChanged();
     }
 
     public void TakeDamage(int damageAmount)
@@ -45,6 +75,8 @@ public class Health : MonoBehaviour
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0);
+        
+        BroadcastHealthChanged();
 
         if (currentHealth == 0)
         {
